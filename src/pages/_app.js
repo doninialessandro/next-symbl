@@ -1,9 +1,10 @@
 import { ChakraProvider, ColorModeProvider } from '@chakra-ui/react'
 
-import theme from '../theme'
+import { AuthProvider } from '../hooks/useAuth'
+import theme from '../styles/theme'
 
-function MyApp({ Component, pageProps }) {
-  return (
+const MyApp = ({ Component, pageProps }) => (
+  <AuthProvider>
     <ChakraProvider resetCSS theme={theme}>
       <ColorModeProvider
         options={{
@@ -13,7 +14,7 @@ function MyApp({ Component, pageProps }) {
         <Component {...pageProps} />
       </ColorModeProvider>
     </ChakraProvider>
-  )
-}
+  </AuthProvider>
+)
 
 export default MyApp
