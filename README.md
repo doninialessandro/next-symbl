@@ -36,4 +36,4 @@ The application is deplyed on
 Check out [Next.js deployment documentation](https://nextjs.org/docs/deployment)
 for more details.
 ### Credits
-🥚 Inspired by [Create Contextual Video Analysis App with NextJS and Symbl.ai](https://egghead.io/playlists/create-contextual-video-analysis-app-with-nextjs-and-symbl-ai-4efb) on (egghead)[https://egghead.io/]
+🥚 Inspired by [Create Contextual Video Analysis App with NextJS and Symbl.ai](https://egghead.io/playlists/create-contextual-video-analysis-app-with-nextjs-and-symbl-ai-4efb) on [egghead](https://egghead.io/)
