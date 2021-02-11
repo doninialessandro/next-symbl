@@ -3,8 +3,8 @@ import {
   Main,
   Hero,
   Header,
-  ProcessingArea,
   ProtectionPage,
+  VideoProcessing,
 } from '../components'
 
 const Index = () => (
@@ -20,7 +20,7 @@ const Index = () => (
           ctaLink="https://github.com/doninialessandro/next-symbl"
           disclaimer="Illustrative purposes only"
         />
-        <ProcessingArea
+        <VideoProcessing
           title="Run Analysis"
           subtitle="Select a video to process 📹."
           image="/images/upload.svg"

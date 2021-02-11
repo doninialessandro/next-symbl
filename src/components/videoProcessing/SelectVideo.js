@@ -1,7 +1,7 @@
 import { InputGroup, useToast, Input, Button } from '@chakra-ui/react'
 import { RiSendPlaneFill } from 'react-icons/ri'
 
-const SelectVideo = () => {
+const SelectVideo = ({ submitFile, handleSelectedFile }) => {
   const toast = useToast()
 
   return (
@@ -11,7 +11,7 @@ const SelectVideo = () => {
           type="file"
           id="input"
           accept="audio/*, video/*"
-          onChange={e => console.log(e.target.files[0])}
+          onChange={e => handleSelectedFile(e.target.files[0])}
         />
       </InputGroup>
       <Button
@@ -24,6 +24,7 @@ const SelectVideo = () => {
             duration: 2000,
             isClosable: true,
           })
+          return submitFile()
         }}
         leftIcon={<RiSendPlaneFill />}
       >

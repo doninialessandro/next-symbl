@@ -1,6 +1,6 @@
 import { Heading, SimpleGrid, Box, Container, List } from '@chakra-ui/react'
 
-const ProcessingData = () => (
+const Result = () => (
   <div>
     <Heading
       as="h1"
@@ -14,7 +14,7 @@ const ProcessingData = () => (
       Processing Data
     </Heading>
     <SimpleGrid columns={2} spacingX="40px" spacingY="20px" marginTop="1rem">
-      <Box boxShadow="dark-lg" p="6" rounded="md">
+      <Box boxShadow="dark-lg" p="6" rounded="1rem" shadow="2xl">
         <Container margin="1rem">
           <Heading as="h4" size="md">
             Transcripts pulled from Conversation API
@@ -28,4 +28,4 @@ const ProcessingData = () => (
   </div>
 )
 
-export default ProcessingData
+export default Result

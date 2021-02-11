@@ -12,4 +12,4 @@ export { default as Hero } from './layout/sections/Hero'
 export { default as Footer } from './layout/sections/Footer'
 
 // Video Processing
-export { default as ProcessingArea } from './videoProcessing/ProcessingArea'
+export { default as VideoProcessing } from './videoProcessing/VideoProcessing'
