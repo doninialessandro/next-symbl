@@ -1,7 +1,7 @@
 import { InputGroup, useToast, Input, Button } from '@chakra-ui/react'
 import { RiSendPlaneFill } from 'react-icons/ri'
 
-const SelectVideo = ({ submitFile, handleSelectedFile }) => {
+const SelectVideo = ({ submitFile, handleSelectedFile, isLoading }) => {
   const toast = useToast()
 
   return (
@@ -16,6 +16,8 @@ const SelectVideo = ({ submitFile, handleSelectedFile }) => {
       </InputGroup>
       <Button
         variant="solid"
+        isLoading={isLoading}
+        loadingText="Processing"
         onClick={() => {
           toast({
             title: '👌 Well done',

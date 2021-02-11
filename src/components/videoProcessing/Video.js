@@ -12,7 +12,7 @@ const Video = ({ image, videoSrc }) => {
           <video id="video-summary" controls src={videoSrc} ref={videoRef} />
         </AspectRatio>
       ) : (
-        <Image src={image} size="100%" />
+        <Image src={image} size="100%" p={20} />
       )}
     </Box>
   )

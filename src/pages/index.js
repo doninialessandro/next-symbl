@@ -21,9 +21,9 @@ const Index = () => (
           disclaimer="Illustrative purposes only"
         />
         <VideoProcessing
-          title="Run Analysis"
+          title="Run Processing"
           subtitle="Select a video to process 📹."
-          image="/images/upload.svg"
+          image="/images/upload2.svg"
         />
         <br />
       </ProtectionPage>

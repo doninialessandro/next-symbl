@@ -119,6 +119,7 @@ const ProtectionPage = ({ children }) => {
                 textAlign="center"
                 color="primary.800"
                 opacity="0.6"
+                mb={20}
               >
                 You need a{' '}
                 <Link color="teal" href="https://symbl.ai/">

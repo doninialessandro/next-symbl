@@ -1,30 +1,31 @@
 /* eslint-disable jsx-a11y/media-has-caption */
-import { useState, useEffect } from 'react'
-import { Flex, Heading, Stack } from '@chakra-ui/react'
+import { useState, useEffect, useCallback } from 'react'
+import { Flex, Heading, Stack, useToast } from '@chakra-ui/react'
 
 import Video from './Video'
 import SelectVideo from './SelectVideo'
 import Result from './Result'
 
 import { useAuth } from '../../hooks/useAuth'
+import { useInterval } from '../../hooks/useInterval'
 
 const ProcessingArea = ({ title, subtitle, image }) => {
   const [file, setFile] = useState('')
   const [videoSrc, setVideoSrc] = useState('')
-  const { token } = useAuth()
+  const [conversationId, setConversationId] = useState(null)
+  const [jobId, setJobId] = useState(null)
+  const [processStatus, setProcessStatus] = useState('not_started')
+  const [processResults, setProcessResults] = useState([])
 
-  useEffect(() => {
-    if (file) {
-      const src = URL.createObjectURL(new Blob([file], { type: 'video/mp4' }))
-      setVideoSrc(src)
-    }
-  }, [file])
+  const { token } = useAuth()
+  const toast = useToast()
 
   const handleSelectedFile = selectedFile => {
     setFile(selectedFile)
   }
 
   const submitFileForProcessing = fileToProcess => {
+    setProcessStatus('in_progress')
     fetch('https://api.symbl.ai/v1/process/video', {
       method: 'POST',
       headers: {
@@ -36,9 +37,65 @@ const ProcessingArea = ({ title, subtitle, image }) => {
     })
       .then(rawResult => rawResult.json())
       .then(result => {
-        console.log(result)
+        setConversationId(result.conversationId)
+        setJobId(result.jobId)
       })
   }
+
+  useInterval(
+    () => {
+      if (jobId) {
+        fetch(`https://api.symbl.ai/v1/job/${jobId}`, {
+          method: 'GET',
+          headers: {
+            'x-api-key': token,
+          },
+        })
+          .then(rawResult => rawResult.json())
+          .then(result => setProcessStatus(result.status))
+      }
+    },
+    1000,
+    processStatus === 'completed' || (processStatus !== 'not_started' && !jobId)
+  )
+
+  const getTranscripts = useCallback(() => {
+    fetch(`https://api.symbl.ai/v1/conversations/${conversationId}/messages`, {
+      method: 'GET',
+      headers: {
+        'x-api-key': token,
+        'Content-Type': 'application/json',
+      },
+      mode: 'cors',
+    })
+      .then(rawResult => rawResult.json())
+      .then(result => {
+        setProcessResults(result.messages)
+        setConversationId(null)
+        setJobId(null)
+        setProcessStatus('not_started')
+        toast({
+          title: '🎊 Finish!',
+          description: 'The processing is completed!',
+          status: 'success',
+          duration: 4000,
+          isClosable: true,
+        })
+      })
+  }, [conversationId, toast, token])
+
+  useEffect(() => {
+    if (file) {
+      const src = URL.createObjectURL(new Blob([file], { type: 'video/mp4' }))
+      setVideoSrc(src)
+    }
+  }, [file])
+
+  useEffect(() => {
+    if (processStatus === 'completed' && conversationId) {
+      getTranscripts()
+    }
+  }, [getTranscripts, processStatus, conversationId])
 
   return (
     <>
@@ -84,20 +141,11 @@ const ProcessingArea = ({ title, subtitle, image }) => {
           <SelectVideo
             submitFile={() => submitFileForProcessing(file)}
             handleSelectedFile={handleSelectedFile}
+            isLoading={processStatus === 'in_progress'}
           />
         </Stack>
       </Flex>
-      <Flex
-        justify={{ base: 'start', md: 'start' }}
-        direction={{ md: 'row' }}
-        wrap="no-wrap"
-        minH="70vh"
-        w="100%"
-        px={8}
-        mb={16}
-      >
-        <Result />
-      </Flex>
+      {processResults.length > 0 && <Result messages={processResults} />}
     </>
   )
 }
