@@ -1,19 +1,32 @@
-import { Container, Main, Hero, Header } from '../components'
+import {
+  Container,
+  Main,
+  Hero,
+  Header,
+  ProcessingArea,
+  ProtectionPage,
+} from '../components'
 
 const Index = () => (
   <Container>
     <Main>
-      <Header />
-      <Hero
-        title="Video Analysis"
-        subtitle="Contextual Video Analysis app to process a conversation from a video and rendering transcripts to screen using Symbl and Next.js 📹 🔉 📝"
-        image="/images/wave.jpg"
-        ctaText="Source code"
-        ctaLink="https://github.com/doninialessandro/next-symbl"
-        disclaimer="Illustrative purposes only"
-      />
-
-      <br />
+      <ProtectionPage>
+        <Header />
+        <Hero
+          title="Video Analysis"
+          subtitle="Contextual Video Analysis app to process a conversation from a video and rendering transcripts to screen using Symbl and Next.js 📹 🔉 📝."
+          image="/images/wave.jpg"
+          ctaText="Source code"
+          ctaLink="https://github.com/doninialessandro/next-symbl"
+          disclaimer="Illustrative purposes only"
+        />
+        <ProcessingArea
+          title="Run Analysis"
+          subtitle="Select a video to process 📹."
+          image="/images/upload.svg"
+        />
+        <br />
+      </ProtectionPage>
     </Main>
   </Container>
 )
