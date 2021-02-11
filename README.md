@@ -15,6 +15,7 @@ npm run dev
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 result.
 
+> :warning: **IMPORTANT**: You need a [Symbl](https://symbl.ai/) account to login.
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
@@ -34,3 +35,5 @@ The application is deplyed on
 
 Check out [Next.js deployment documentation](https://nextjs.org/docs/deployment)
 for more details.
+### Credits
+🥚 Inspired by [Create Contextual Video Analysis App with NextJS and Symbl.ai](https://egghead.io/playlists/create-contextual-video-analysis-app-with-nextjs-and-symbl-ai-4efb) on (egghead)[https://egghead.io/]
