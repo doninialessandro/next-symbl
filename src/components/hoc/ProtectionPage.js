@@ -88,14 +88,14 @@ const ProtectionPage = ({ children }) => {
                 Login
               </Heading>
               <Input
-                placeholder="id"
+                placeholder="App ID"
                 size="md"
                 value={appId}
                 onChange={e => setAppId(e.target.value)}
               />
               <InputGroup size="md">
                 <Input
-                  placeholder="secret"
+                  placeholder="App Secret"
                   size="md"
                   value={appSecret}
                   pr="4.5rem"
@@ -116,17 +116,18 @@ const ProtectionPage = ({ children }) => {
               <Text
                 fontSize="xs"
                 mt={2}
-                textAlign="center"
+                textAlign="left"
                 color="primary.800"
                 opacity="0.6"
                 mb={20}
               >
-                You need Symbl API Credentials to login.
-                Don't you have them? Register on{' '}
-                <Link color="teal" href="https://symbl.ai/">
-                  Symbl{' '}
-                </Link>
-                to get them.
+                You need <b>Symbl API Credentials</b> to login. Register on{' '}
+                <b>
+                  <Link color="teal" href="https://symbl.ai/">
+                    Symbl{' '}
+                  </Link>
+                </b>
+                to got them.
               </Text>
             </Stack>
           </Flex>
