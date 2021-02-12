@@ -121,11 +121,12 @@ const ProtectionPage = ({ children }) => {
                 opacity="0.6"
                 mb={20}
               >
-                You need a{' '}
+                You need Symbl API Credentials to login.
+                Don't you have them? Register on{' '}
                 <Link color="teal" href="https://symbl.ai/">
                   Symbl{' '}
                 </Link>
-                account to login.
+                to get them.
               </Text>
             </Stack>
           </Flex>
