@@ -127,7 +127,7 @@ const ProtectionPage = ({ children }) => {
                     Symbl{' '}
                   </Link>
                 </b>
-                to got them.
+                to get them.
               </Text>
             </Stack>
           </Flex>
