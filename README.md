@@ -1,7 +1,6 @@
 Simple application to process a conversation from a video and rendering transcripts to screen bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) for the main stack and [Symbl's RESTful API](https://symbl.ai/)
 
-> :warning: **This is a learning project**, some best practices are out of scope
-> and the payment function works in test mode.
+> :warning: **This is a learning project**, some best practices are out of scope.
 
 ## Getting Started
 
